@@ -183,3 +183,70 @@ print(string.match(str1, '%a+'))
 for word in string.gmatch(str1, '%a') do
 	print(word)
 end
+
+array = {1, 2, 3}
+for i=1, 3, 1 do
+	print(array[i])
+end
+print('-------------------')
+array = {}
+for i=-2, 2 do
+	array[i] = i * 2
+end
+for i = -2, 2 do
+	print(array[i])
+end
+print('数组长度', #array, array)
+print('--------多维数组---------')
+
+array = {}
+for i=1, 3 do
+	array[i] = {}
+	for j=1, 3 do
+		array[i][j] = i*j
+	end
+end
+print(array)
+for i=1, 3 do
+	for j=1, 3 do
+		print(array[i][j])
+	end
+end
+print('-----------------------')
+-- 初始化数组
+array = {}
+maxRows = 3
+maxColumns = 3
+for row=1,maxRows do
+	for col=1,maxColumns do
+    	array[row*maxColumns +col] = row*col
+	end
+end
+
+-- 访问数组
+for row=1,maxRows do
+	for col=1,maxColumns do
+		print(array[row*maxColumns +col])
+	end
+end
+print('-----------------------')
+-- array = {1, 2, 3}
+array = {1,3,[5]=5,name="kaikai",age=12, 89}
+for k, v in pairs(array) do
+	print(k, v)
+end
+print('---')
+for k, v in ipairs(array) do
+	print(k, v)
+end
+print('---------------------')
+
+function square(iterator_max_count, current_number)
+	if current_number < iterator_max_count then
+		current_number = current_number + 1
+	return current_number, current_number * current_number
+	end
+end
+for i, n in square, 3, 0 do
+	print(i, n)
+end
