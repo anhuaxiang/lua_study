@@ -81,8 +81,9 @@ for i=1, 9, 1
 do
 	for j=1, i, 1
 	do
-		print(j, '*', i, '=', i*j, '\\')
+		io.write(j, '*', i, '=',  i*j, '\t')
 	end
+	print()
 end
 print("分割线")
 j =2
