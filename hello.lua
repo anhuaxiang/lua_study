@@ -65,4 +65,46 @@ else
 end
 
 
+local a = 1
+while a < 10
+do
+	print(a)
+	a = a + 1
+end
+print('---------------')
+for i=10,-2,-2
+do
+   print(i)
+end
 
+for i=1, 9, 1
+do
+	for j=1, i, 1
+	do
+		print(j, '*', i, '=', i*j, '\\')
+	end
+end
+print("分割线")
+j =2
+for i=2,10 do
+   for j=2, (i/j) , 2 do
+      if(not(i%j))
+      then
+         break
+      end
+      if(j > (i/j)) then
+         print("Value of i is",i)
+      end
+   end
+end
+
+print('-----------------------')
+local a = 10
+while a < 20 do
+	print('value of a', a)
+	a = a +1
+	if a > 15 then
+		break
+	end
+end
+print('-------------------')
