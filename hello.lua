@@ -108,3 +108,32 @@ while a < 20 do
 	end
 end
 print('-------------------')
+
+a = 22
+if a < 20 then
+	print('a<20')
+else
+	print('a>20')
+end
+print('-------------------')
+
+a = 100
+if a == 10 then
+	print('a=10')
+elseif a == 20 then
+	print('a=20')
+elseif a == 30 then
+	print('a=30')
+else 
+	print('不符合条件')
+end
+print('-------------------')
+a = 4
+if a < 10 then
+	print('a<10')
+	if a < 5 then
+		print('a<5')
+	end
+end
+print('-------------------')
+
