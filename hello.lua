@@ -285,7 +285,61 @@ end
 for ele in element_iterator(array) do
 	print(ele)
 end
+print('------------------------------')
+print('------------------------------')
+print('------------------------------')
+--lua table
+function print_table(array)
+	print('------', array, '-------------')
+	for k, v in pairs(array) do
+		print(k, v)
+	end
+end
 
-print('------------------------------')
-print('------------------------------')
-print('------------------------------')
+my_table = {}
+print(type(my_table))
+
+my_table[1] = 'Lua'
+my_table['user'] = 'xiaoyan'
+print_table(my_table)
+
+copy_table = my_table
+print_table(copy_table)
+
+copy_table['user'] = 'xiaoxiao'
+print_table(my_table)
+print_table(copy_table)
+copy_table = nil
+print_table(my_table)
+print(copy_table)
+
+my_table = {'xiaoyan', 'xiaofang', 'xiaoxiao'}
+print(table.concat(my_table))
+print(table.concat(my_table, ','))
+print(table.concat(my_table, ',', 2, 3))
+
+table.insert(my_table, 'xiaodeng')
+print_table(my_table)
+table.insert(my_table, 2, 'xiaohei')
+print_table(my_table)
+table.remove(my_table)
+print_table(my_table)
+table.remove(my_table, 1)
+print_table(my_table)
+table.sort(my_table)
+print_table(my_table)
+--table.maxn 返回table的长度
+print(my_table[table.maxn(my_table)])
+your_table = {1, 5}
+print(table.maxn(your_table))
+
+function table_maxn(t)
+	local mn = t[1]
+	for k, v in pairs(t) do
+		if v and v > mn then
+			mn = v
+		end
+	end
+	return mn
+end
+print(table_maxn(my_table))
