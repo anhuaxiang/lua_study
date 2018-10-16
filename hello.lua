@@ -137,3 +137,35 @@ if a < 10 then
 end
 print('-------------------')
 
+function max(a, b)
+	if a >= b then
+		return a
+	else
+		return b
+	end
+end
+print(max(1, 2))
+print('-------------------')
+
+myprint = function(param)
+	print('param=', param)
+end
+function sum(a, b, fun_print)
+	fun_print(a+b)
+end
+print(myprint(5))
+sum(5, 6, myprint)
+print('-------------------')
+function average( ... )
+	result = 0
+	local args = {...}
+	for i,v in ipairs(args) do
+		print(i, v)
+		result = result + v
+	end
+	return result / #args
+end
+print(average(10, 5, 6, 4))
+
+
+
