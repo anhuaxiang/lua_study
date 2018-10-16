@@ -168,4 +168,18 @@ end
 print(average(10, 5, 6, 4))
 
 
+str1 = "lua"
+print(str1)
+str2 = 'LUA'
+print(str2)
+str3 = [["Lua"\'dfdfa']]
+print(str3)
 
+print(string.sub(str1, 1, -1))
+print(string.gsub(str1, 'u', 'a'))
+print(string.format('%d', 5))
+print(string.find(str1, 'a'))
+print(string.match(str1, '%a+'))
+for word in string.gmatch(str1, '%a') do
+	print(word)
+end
