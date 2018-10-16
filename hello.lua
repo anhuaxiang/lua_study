@@ -250,3 +250,42 @@ end
 for i, n in square, 3, 0 do
 	print(i, n)
 end
+print('------------------------------')
+print('------------------------------')
+print('------------------------------')
+
+function iter(a, i)
+	i = i + 1
+	local v = a[i]
+	if v then
+		return i, v
+	end
+end
+function my_ipairs(a)
+	return iter, a, 0
+end
+
+array = {1, 4, 2, 4, 6}
+for i, n in my_ipairs(array) do
+	print(i, n)
+end
+print('---------------')
+array = {'lua', 'python'}
+function element_iterator(collction)
+	local index = 0
+	local length = #collction
+	return function ()
+		index = index  + 1
+		if index <= length then
+			return collction[index]
+		end
+	end
+end
+
+for ele in element_iterator(array) do
+	print(ele)
+end
+
+print('------------------------------')
+print('------------------------------')
+print('------------------------------')
