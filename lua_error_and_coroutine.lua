@@ -77,32 +77,32 @@ print()
 print()
 
 
---Lua productor, consumer
--- local new_productor
+Lua productor, consumer
+local new_productor
 
--- function productor()
--- 	local i = 0
--- 	while true do
--- 		i = i + 1
--- 		send(i)
--- 	end
--- end
+function productor()
+	local i = 0
+	while true do
+		i = i + 1
+		send(i)
+	end
+end
 
--- function consumer()
--- 	while true do
--- 		local i = receive()
--- 		print(i)
--- 	end
--- end
+function consumer()
+	while true do
+		local i = receive()
+		print(i)
+	end
+end
 
--- function receive()
--- 	local status, value = coroutine.resume(new_productor)
--- 	return value
--- end
+function receive()
+	local status, value = coroutine.resume(new_productor)
+	return value
+end
 
--- function send(x)
--- 	coroutine.yield(x)
--- end
+function send(x)
+	coroutine.yield(x)
+end
 
--- new_productor = coroutine.create(productor)
--- consumer()
+new_productor = coroutine.create(productor)
+consumer()
