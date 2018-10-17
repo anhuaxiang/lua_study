@@ -44,3 +44,40 @@ echo ${#string}
 echo ${string:0:5}
 
 echo `expr index "$string" ad`
+echo ''
+echo ""
+echo ''
+echo '---------------------------------'
+array_name=(1 2 3 4 5 6)
+echo $array_name
+array_name=(
+	1
+	2
+	3
+	4
+	5
+	6
+	)
+echo $array_name
+arr[1]='a'
+arr[2]='b'
+arr[b]='cbfadfdfa'
+echo ${arr[1]}
+echo ${arr[2]}
+echo ${arr[b]}
+echo ${arr[@]}
+echo ${#array_name[@]}, ${#arr[@]}
+echo ${#array_name[*]}, ${#arr[*]}
+echo ${#array_name[0]}, ${#arr[b]}
+
+# 这是注释
+# 这是单行注释
+:<<EOF
+EOF 可以换成 ' 或者 ！（前后都换）
+这是多行注释
+fdaf
+fadsf
+afa
+这是多行注释
+EOF
+echo '测试注释'
