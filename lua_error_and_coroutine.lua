@@ -77,7 +77,7 @@ print()
 print()
 
 
-Lua productor, consumer
+--Lua productor, consumer
 local new_productor
 
 function productor()
