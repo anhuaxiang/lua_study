@@ -12,11 +12,13 @@ local posix = require("posix")
 local base_path = "/sys/class/net"
 
 
+-- 间隔函数
 function sleep(n)
     posix.sleep(n)
 end
 
 
+-- 从文件读取网络信息
 function get_msg_from_file(filename)
     local file = io.open(filename)
     io.input(file)
@@ -24,10 +26,27 @@ function get_msg_from_file(filename)
 end
 
 
+-- ip地址有命令方式获取
+function get_ip_from_execute(name)
+    local info = io.popen("ifconfig " .. name)
+    io.input(info)
+    local info_str = io.read("*all")
+    local ip = string.match(info_str, 'inet addr:([%d.]+)')
+    return ip
+end
+
+
+-- 监听网络状态，变化提示
 function listen_net(name, path)
+    local ip = get_ip_from_execute(name)
     local address = get_msg_from_file(path .. "/address")
     local carrier = get_msg_from_file(path .. "/carrier")
     local operstate = get_msg_from_file(path .. "/operstate")
+    if ip ~= table_status[name].ip then
+        print("ip changed --> " .. ip)
+        table_status[name].ip = ip
+    end
+
     if address ~= table_status[name].address then
         print("address changed --> ", address)
         table_status[name].address = address
@@ -40,11 +59,13 @@ function listen_net(name, path)
         print("address changed --> ", operstate)
         table_status[name].operstate = operstate
     end
-    table_status[name] = {address=address, carrier=carrier, operstate=operstate}
-    print(name, table_status[name].address, table_status[name].carrier, table_status[name].operstate)
+    table_status[name] = {address=address, carrier=carrier, operstate=operstate, ip=ip}
+    print(name, table_status[name].address, table_status[name].ip, "  " .. table_status[name].carrier, table_status[name].operstate)
 end
 
 
+--- 主函数
+--- 先获取网卡名称，再根据名称去监听网络状态
 function main()
     local path_list = {}
     table_status = {}
